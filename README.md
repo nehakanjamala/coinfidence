@@ -1,2 +1,0 @@
-# coinfidence
-Financial Planner Website
