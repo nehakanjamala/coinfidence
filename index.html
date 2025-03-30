@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Coin-fidence</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script src="script.js"></script>
+
+  <header class="header">
+    <h1>
+      <center>Coinfidence</center>
+    </h1>
+  </header>
+  <p>
+    <center>Find confidence in every coin you spend</center>
+  </p>
+
+  <ul>
+
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="transactions.html">Transactions</a></li>
+    <li><a href="#advice">Advice</a></li>
+  </ul>
+
+  <div class="container add-transaction-summary">
+    <!-- Add Transaction Form and Budget Summary Side by Side -->
+    <div class="container" style="flex: 1;">
+      <h2>Add a Transaction</h2>
+      <label>Date: <input type="date" id="date"></label><br><br>
+      <label>Amount: <input type="number" id="amount"></label> <br><br>
+      <label>Description: <input type="text" id="description"></label><br><br>
+      <label>Category:
+        <select id="category">
+          <option value="necessities">Necessities</option>
+          <option value="savings">Savings</option>
+          <option value="lifestyle">Lifestyle</option>
+        </select>
+      </label><br>
+      <br><button onclick="addTransaction()">Add Transaction</button>
+    </div>
+
+    <div class="container" style="flex: 1;">
+      <h2>Budget Summary (50-20-30 Rule)</h2>
+      <p>Necessities (59.4%) <span class="float-right">
+
+          <div class="progress-container">
+            <div class="necessary-bar" style="width: 59.4%"> </div>
+          </div>
+
+        </span></p>
+      <div class="w-full bg-gray-200 rounded h-2">
+        <div class="bg-blue-500 h-2" style="width: 59.4%"></div>
+      </div>
+      <p>Savings (20%) <span class="float-right">
+
+          <div class="progress-container">
+            <div class="savings-bar" style="width: 29.4%"> </div>
+          </div>
+
+        </span></p>
+      <div class="w-full bg-gray-200 rounded h-2">
+        <div class="bg-green-500 h-2" style="width: 31.2%"></div>
+      </div>
+      <p>Lifestyle (30%) <span class="float-right">
+
+          <div class="progress-container">
+            <div class="lifestyle-bar" style="width: 37.0%"> </div>
+          </div>
+
+
+        </span></p>
+      <div class="w-full bg-gray-200 rounded h-2">
+        <div class="bg-purple-500 h-2" style="width: 9.4%"></div>
+      </div>
+      <p class="mt-2 font-bold">Total Spending: $3045.00</p>
+    </div>
+  </div>
+
+  <div class="container side-by-side">
+    <!-- Budget Pie Charts Side by Side -->
+    <div class="chart-container" id="budget">
+      <h2>Budget Allocation</h2>
+      <canvas id="budgetChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <h2>Ideal 50-20-30</h2>
+      <canvas id="idealChart"></canvas>
+
+
+    </div>
+    <div class="financ-container">
+      <div id="advice">
+
+        <h2>Financial Advice</h2>
+        <p>Your savings rate is excellent!</p>
+
+        <dul>
+          <li>Consider diversifying savings into different investments.</li>
+          <li>Ensure you have both emergency and long-term investments.</li>
+        </dul>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    const budgetData = {
+      labels: ['Necessities 59%', 'Savings 31%', 'Lifestyle 9%'],
+      datasets: [{
+        data: [59, 31, 9],
+        backgroundColor: ['#89cff0', '#93c83e', '#f46fa1']
+      }]
+    };
+    const idealData = {
+      labels: ['Necessities (50%)', 'Savings (20%)', 'Lifestyle (30%)'],
+      datasets: [{
+        data: [50, 20, 30],
+        backgroundColor: ['#89cff0', '#93c83e', '#f46fa1']
+      }]
+    };
+    new Chart(document.getElementById('budgetChart'), {type: 'pie', data: budgetData});
+    new Chart(document.getElementById('idealChart'), {type: 'pie', data: idealData});
+  </script>
+</body>
+
+</html>
