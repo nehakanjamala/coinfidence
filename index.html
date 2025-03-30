@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coin-fidence</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header class="header">
+    <h1><center>Coinfidence</center></h1>
+
+  <p> </center> Find confidence in every coin you spend</center></p>  </header>
+ 
+  <ul>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#trans">Transactions</a></li>
+    <li><a href="#advice">Advice</a></li>
+  </ul> 
+  
+  <div class="container side-by-side">
+    <span id="past-transactions-label"><h3>Past Transactions</h3></span>
+    <!-- Add Transaction Form -->
+    
+<span></span>
+    <ul id="transaction-list"></ul>
+     
+    <div class="container" style="flex: 1;">
+      
+      <h2>Add a Transaction</h2>
+      <form id="add-transaction-form" class="space-y-4" onsubmit="addTransaction(event)">
+        <label>Date: <input type="date" id="date" required></label><br><br>
+        <label>Amount: <input type="number" id="amount" step="0.01" required></label> <br><br>
+        <label>Description: <input type="text" id="description" required></label><br><br>
+        <label>Category:
+          <select id="category" required>
+            <option value="necessities">Necessities</option>
+            <option value="savings">Savings</option>
+            <option value="lifestyle">Lifestyle</option>
+          </select>
+        </label><br><br>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </div>
+
+    <!-- Budget Summary -->
+    <div  class="container side-by-side">
+    <div class="container"  style="flex: 1;">
+      
+      <h2>Budget Summary (50-20-30 Rule)</h2>
+
+      <p>Necessities: <span id="necessities-percentage">0%</span></p>
+      <div class="progress-container">
+        <div class="progress-bar" id="necessities-bar" data-category="necessities" style="width:0%"></div>
+      </div>
+
+      <p>Savings: <span id="savings-percentage">0%</span></p>
+      <div class="progress-container">
+        <div class="progress-bar" id="savings-bar" data-category="savings" style="width: 0%"></div>
+      </div>
+
+      <p>Lifestyle: <span id="lifestyle-percentage">0%</span></p>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="lifestyle-bar" data-category="lifestyle" style="width: 0%"></div>
+      </div>
+
+      <p class="mt-2 font-bold">Total Spending: $<span id="total-spending">0.00</span></p>
+    </div>
+  </div>
+    </div>
+
+  <div class="container side-by-side">
+    <div class="chart-container" id="budget">
+      <h2>Budget Allocation</h2>
+      <canvas id="budgetChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <h2>Ideal 50-20-30</h2>
+      <canvas id="idealChart"></canvas>
+    </div>
+    <div class="financ-container">
+      <div id="advice">
+        <h2>Financial Advice</h2>
+        <p>Your savings rate is excellent!</p>
+        <dul >
+          <li>Consider diversifying savings into different investments.</li>
+          <li>Ensure you have both emergency and long-term investments.</li>
+        </dul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
